@@ -6,7 +6,7 @@ const Home = () => {
 export const getServerSideProps = async ({ res }) => {
     // ทำการ redirect ไปที่ '/calculate'
     res.writeHead(302, {
-        Location: "/calculate",
+        Location: "/menu",
     });
     res.end();
 
