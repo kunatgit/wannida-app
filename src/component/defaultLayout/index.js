@@ -13,13 +13,14 @@ import {
 
 function DefaultLayout({ body }) {
     return (
-        <Box bg={Constants.colorTheme}>
+        <Box>
             <Container
                 maxW="2xl"
                 centerContent
                 height="100vh"
                 bg="white"
                 padding="10"
+                justifyContent={'center'}
             >
                 {body}
             </Container>
