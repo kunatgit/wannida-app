@@ -13,7 +13,7 @@ import {
 
 function DefaultLayout({ body }) {
     return (
-        <Box bg="blue.100">
+        <Box >
             <Container
                 maxW="3xl"
                 centerContent
