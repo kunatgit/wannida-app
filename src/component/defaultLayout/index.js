@@ -13,9 +13,9 @@ import {
 
 function DefaultLayout({ body }) {
     return (
-        <Box>
+        <Box bg="blue.100">
             <Container
-                maxW="2xl"
+                maxW="3xl"
                 centerContent
                 height="100vh"
                 bg="white"

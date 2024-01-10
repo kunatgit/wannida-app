@@ -10,6 +10,8 @@ export const colorTheme600 = color+'.600'
 export const colorTheme700 = color+'.700'
 export const colorTheme800 = color+'.800'
 export const colorTheme900 = color+'.900'
+export const colorBorder = 'rgba(190, 227, 255, 1)'
+export const colorBoxShadow = '15px 15px 20px rgba(190, 227, 248, 1)'
 
 export const constantMenu = [
     {text:'จัดการ เมนูอาหาร',directPath:'foods'},

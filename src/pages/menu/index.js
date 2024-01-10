@@ -2,9 +2,14 @@ import DefaultLayout from "@/component/defaultLayout";
 import * as Constants from "@/constant";
 import { Box, Text, VStack } from "@chakra-ui/react";
 import { useRouter } from 'next/router';
+import React, { useRef, useEffect } from 'react';
 
 function MenuPage() {
     const router = useRouter();
+    const colorInPage = Constants.colorTheme400
+    const colorBorder = Constants.colorBorder
+    const colorBoxShadow = Constants.colorBoxShadow
+
     const handleClick = (item) => {
         console.log("item : ", item);
         if(item.directPath){
@@ -12,6 +17,7 @@ function MenuPage() {
             router.push(path);
         }
     };
+
     return (
         <DefaultLayout
             body={
@@ -20,34 +26,29 @@ function MenuPage() {
                     align="stretch"
                     w={{ base: "100%", sm: "60%" }}
                     border={'2px solid'}
-                    borderColor={Constants.colorTheme700}
+                    borderColor={Constants.colorTheme50}
                     borderRadius={'20'}
-                    boxShadow={'10px 10px 20px rgba(0, 0, 0, 0.3)'}
+                    boxShadow={colorBoxShadow}
                     padding="10"
                 >
-                    <Box>
-                        <Text
-                            textAlign={"center"}
-                            color={Constants.colorTheme700}
-                            fontSize={"4vh"}
-                        >
-                            {Constants.titleApp}
-                        </Text>
+                    <Box mb={'2'}>
+                        <Text textAlign={"center"} color={colorInPage} fontSize={"4vh"}>{Constants.titleApp}</Text>
                     </Box>
                     {
                         Constants.constantMenu.map((item, index) => {
                             return (
                                 <Box
-                                     border={'1px solid'}
-                                    borderColor={Constants.colorTheme700}
-                                    color={Constants.colorTheme700}
+                                    key={"menu_"+index}
+                                    border={'2px solid'}
+                                    borderColor={colorBorder}
+                                    color={colorInPage}
                                     borderRadius={'50'}
                                     padding="4"
                                     bg="white"
                                     w={"100%"}
                                     cursor="pointer"
                                     _hover={{
-                                        bgColor: Constants.colorTheme700,
+                                        bgColor: colorInPage,
                                         color: "white",
                                         transition: "background-color 0.3s ease",
                                     }}
