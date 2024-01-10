@@ -1,4 +1,3 @@
-import Navbar from "@/component/navbar";
 import * as React from 'react'
 import { ChakraProvider, omitThemingProps } from "@chakra-ui/react";
 import '../styles/global.css';
