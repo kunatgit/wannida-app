@@ -13,12 +13,11 @@ import {
 
 function DefaultLayout({ body }) {
     return (
-        <Box >
+        <Box>
             <Container
                 maxW="3xl"
                 centerContent
                 height="100vh"
-                bg="white"
                 padding="10"
                 justifyContent={'center'}
             >

@@ -20,6 +20,7 @@ function MenuPage() {
         <DefaultLayout
             body={
                 <VStack
+                    bg="white"
                     spacing={4}
                     align='stretch'
                     w={{ base: '100%', sm: '100%' ,md: '80%'}}
@@ -33,8 +34,9 @@ function MenuPage() {
                     //         },
                     //     },
                     // }}
-                    // boxShadow={'0px 0px 100px rgba(190, 227, 248, 1)'}
-                    padding={{ base: '2', sm: '2' ,md: '10'}}
+                    borderRadius={'30'}
+                    boxShadow={'0px 0px 100px rgb(57 125 163)'}
+                    padding={{ base: '5', sm: '5' ,md: '10'}}
                 >
                     <Box mb={'2'}>
                         <Text
@@ -77,9 +79,8 @@ function MenuPage() {
                                     },
                                 }}
                                 _hover={{
-                                    bgColor: Constants.colorTheme,
-                                    color: 'white',
-                                    transition: '0.9s ease',
+                                    bgColor: 'blue.50',
+                                    transition: '0.3s ease',
                                     borderRadius:'0',
                                 }}
                                 onClick={() => handleClick(item)}
