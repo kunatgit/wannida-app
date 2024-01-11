@@ -21,7 +21,9 @@ function DefaultLayout({ body }) {
                 padding="10"
                 justifyContent={'center'}
             >
-                {body}
+                <Box w={{ base: '100%', sm: '100%' ,md: '80%'}}>
+                    {body}
+                </Box>
             </Container>
         </Box>
     );

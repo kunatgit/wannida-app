@@ -22,9 +22,8 @@ function MenuPage() {
                 <VStack
                     spacing={4}
                     align='stretch'
-                    w={{ base: '100%', sm: '100%' ,md: '80%'}}
                     borderRadius={'30'}
-                    boxShadow={'0px 0px 100px rgb(57 125 163)'}
+                    boxShadow={'0px 0px 100px rgb(105 186 231)'}
                     padding={{ base: '5', sm: '5' ,md: '10'}}
                 >
                     <Box mb={'2'}>

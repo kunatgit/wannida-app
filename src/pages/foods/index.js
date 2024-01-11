@@ -13,7 +13,7 @@ function FoodPage() {
                 <VStack
                     spacing={4}
                     align="stretch"
-                    w={{ base: "100%", sm: "50%" }}
+                    bg='blue.50'
                 >
                     <Box>
                         <Text
