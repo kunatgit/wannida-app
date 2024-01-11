@@ -20,20 +20,9 @@ function MenuPage() {
         <DefaultLayout
             body={
                 <VStack
-                    bg="white"
                     spacing={4}
                     align='stretch'
                     w={{ base: '100%', sm: '100%' ,md: '80%'}}
-                    // border={'2px solid'}
-                    // borderColor={'blue.400'}
-                    // sx={{
-                    //     animation: 'mymove 2s infinite linear',
-                    //     '@keyframes mymove': {
-                    //         '50%': {
-                    //             borderColor: 'var(--chakra-colors-blue-50)',
-                    //         },
-                    //     },
-                    // }}
                     borderRadius={'30'}
                     boxShadow={'0px 0px 100px rgb(57 125 163)'}
                     padding={{ base: '5', sm: '5' ,md: '10'}}
