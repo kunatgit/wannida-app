@@ -26,6 +26,7 @@ function MenuPage() {
                     borderRadius={'30'}
                     boxShadow={'0px 0px 100px rgb(105 186 219)'}
                     padding={{ base: '5', sm: '5' ,md: '10'}}
+                    margin={'10'}
                 >
                     <Box mb={'1'}>
                         <Text

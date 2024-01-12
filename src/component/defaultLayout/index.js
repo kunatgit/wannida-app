@@ -15,10 +15,10 @@ function DefaultLayout({ body }) {
     return (
         <Box>
             <Container
-                maxW='3xl'
+                maxW='6xl'
                 centerContent
                 height="100vh"
-                padding="10"
+                padding={{ base: '0', sm: '0' ,md: '10'}}
                 justifyContent={'center'}
             >
                 <Box w={{ base: '100%', sm: '100%' ,md: '80%'}}>
