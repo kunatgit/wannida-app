@@ -3,7 +3,7 @@ import * as Constants from '@/constant';
 import { Box, Text, VStack } from '@chakra-ui/react';
 import React, { useRef, useEffect } from 'react';
 
-function ButtonTheme({ text,onClick }) {
+function ButtonMenu({ text,onClick }) {
 
     return (
         <Box
@@ -37,4 +37,4 @@ function ButtonTheme({ text,onClick }) {
     );
 }
 
-export default ButtonTheme;
+export default ButtonMenu;

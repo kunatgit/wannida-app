@@ -1,4 +1,4 @@
-import ButtonTheme from '@/component/buttonTheme';
+import ButtonMenu from '@/component/buttonMenu';
 import * as Constants from '@/constant';
 import { Box, Container, Text, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
@@ -55,12 +55,12 @@ function MenuPage() {
                         </Box>
                         {Constants.constantMenu.map((item, index) => {
                             return (
-                                <ButtonTheme
+                                <ButtonMenu
                                     key={'menu_' + index}
                                     text={item.text}
                                     onClick={() => {handleClick(item)}}
                                 >
-                                </ButtonTheme>
+                                </ButtonMenu>
                             );
                         })}
                     </VStack>
