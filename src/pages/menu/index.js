@@ -19,7 +19,7 @@ function MenuPage() {
     return (
         <Box>
             <Container
-                maxW='6xl'
+                maxW='3xl'
                 centerContent
                 height="100vh"
                 padding={{ base: '0', sm: '0' ,md: '10'}}
