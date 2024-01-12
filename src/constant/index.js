@@ -1,5 +1,5 @@
 //Color Theme
-const colorTheme = 'blue';
+export const colorTheme = 'blue';
 export const colorTheme50 = colorTheme+".50";
 export const colorTheme100 = colorTheme+".100";
 export const colorTheme200 = colorTheme+".200";

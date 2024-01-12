@@ -17,7 +17,7 @@ const Loading = (WrappedComponent) => {
 
         return loading ? (
             <Center height="100vh">
-                <Spinner size="xl" color={Constants.colorTheme400} />
+                <Spinner size="xl" color={Constants.colorTheme600} />
             </Center>
         ) : <WrappedComponent {...props} />;
     };

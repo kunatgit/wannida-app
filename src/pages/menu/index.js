@@ -1,6 +1,6 @@
 import ButtonMenu from '@/component/buttonMenu';
 import * as Constants from '@/constant';
-import { Box, Container, Text, VStack } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import React, { useRef, useEffect } from 'react';
 import { TypeAnimation } from 'react-type-animation';
@@ -22,7 +22,7 @@ function MenuPage() {
                 maxW='3xl'
                 centerContent
                 height="100vh"
-                padding={{ base: '0', sm: '0' ,md: '10'}}
+                padding={'10'}
                 justifyContent={'center'}
             >
                 <Box w={{ base: '100%', sm: '100%' ,md: '80%'}}>
@@ -30,14 +30,14 @@ function MenuPage() {
                         spacing={4}
                         align='center'
                         borderRadius={'30'}
-                        boxShadow={'0px 0px 100px rgb(105 186 219)'}
+                        boxShadow={'0px 0px 100px rgb(5 48 120)'}
                         padding={{ base: '5', sm: '5' ,md: '10'}}
                     >
                         <Box mb={'1'}>
-                            <Text
+                            <Heading
+                                size={'md'}
                                 textAlign={'center'}
-                                color={Constants.colorTheme400}
-                                fontSize={{ base: '3vh', sm: '3vh' ,md: '3vh',xl: '5vh'}}
+                                color={Constants.colorTheme600}
                             >
                                 <TypeAnimation
                                     sequence={[
@@ -51,7 +51,7 @@ function MenuPage() {
                                     cursor={true}
                                     repeat={Infinity}
                                 />
-                            </Text>
+                            </Heading>
                         </Box>
                         {Constants.constantMenu.map((item, index) => {
                             return (

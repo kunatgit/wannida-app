@@ -8,8 +8,8 @@ function ButtonMenu({ text,onClick }) {
     return (
         <Box
             border={'2px solid'}
-            borderColor={Constants.colorTheme400}
-            color={Constants.colorTheme400}
+            borderColor={Constants.colorTheme600}
+            color={Constants.colorTheme600}
             borderRadius={'50'}
             padding='4'
             bg='white'
