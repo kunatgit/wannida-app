@@ -1,3 +1,4 @@
+import ButtonTheme from '@/component/buttonTheme';
 import DefaultLayout from '@/component/defaultLayout';
 import * as Constants from '@/constant';
 import { Box, Text, VStack } from '@chakra-ui/react';
@@ -48,36 +49,12 @@ function MenuPage() {
                     </Box>
                     {Constants.constantMenu.map((item, index) => {
                         return (
-                            <Box
+                            <ButtonTheme
                                 key={'menu_' + index}
-                                border={'2px solid'}
-                                borderColor={Constants.colorTheme}
-                                color={Constants.colorTheme}
-                                borderRadius={'50'}
-                                padding='4'
-                                bg='white'
-                                w={{base:'100%',lg:'95%'}}
-                                cursor='pointer'
-                                sx={{
-                                    
-                                }}
-                                _hover={{
-                                    bgColor: 'blue.50',
-                                    transition: '0.3s ease',
-                                    // borderRadius:'0',
-                                    w:'100%',
-                                    animation: 'mymove 1s infinite linear',
-                                    '@keyframes mymove': {
-                                        '50%': {
-                                            borderColor: 'var(--chakra-colors-blue-50)',
-                                            w:'95%'
-                                        },
-                                    },
-                                }}
-                                onClick={() => handleClick(item)}
+                                text={item.text}
+                                onClick={() => {handleClick(item)}}
                             >
-                                <Text textAlign={'center'}>{item.text}</Text>
-                            </Box>
+                            </ButtonTheme>
                         );
                     })}
                 </VStack>
