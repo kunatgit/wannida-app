@@ -21,16 +21,16 @@ function MenuPage() {
             body={
                 <VStack
                     spacing={4}
-                    align='stretch'
+                    align='center'
                     borderRadius={'30'}
-                    boxShadow={'0px 0px 100px rgb(105 186 231)'}
+                    boxShadow={'0px 0px 100px rgb(105 186 219)'}
                     padding={{ base: '5', sm: '5' ,md: '10'}}
                 >
                     <Box mb={'1'}>
                         <Text
                             textAlign={'center'}
                             color={Constants.colorTheme}
-                            fontSize={{ base: '3vh', sm: '3vh' ,md: '3vh',"xl": '5vh'}}
+                            fontSize={{ base: '3vh', sm: '3vh' ,md: '3vh',xl: '5vh'}}
                         >
                             <TypeAnimation
                                 sequence={[
@@ -56,20 +56,23 @@ function MenuPage() {
                                 borderRadius={'50'}
                                 padding='4'
                                 bg='white'
-                                w={'100%'}
+                                w={{base:'100%',lg:'95%'}}
                                 cursor='pointer'
                                 sx={{
-                                    animation: 'mymove 3s infinite linear',
-                                    '@keyframes mymove': {
-                                        '50%': {
-                                            borderColor: 'var(--chakra-colors-blue-50)',
-                                        },
-                                    },
+                                    
                                 }}
                                 _hover={{
                                     bgColor: 'blue.50',
                                     transition: '0.3s ease',
-                                    borderRadius:'0',
+                                    // borderRadius:'0',
+                                    w:'100%',
+                                    animation: 'mymove 1s infinite linear',
+                                    '@keyframes mymove': {
+                                        '50%': {
+                                            borderColor: 'var(--chakra-colors-blue-50)',
+                                            w:'95%'
+                                        },
+                                    },
                                 }}
                                 onClick={() => handleClick(item)}
                             >
