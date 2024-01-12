@@ -6,7 +6,24 @@ import {
     VStack,
 } from "@chakra-ui/react";
 
+import React, { useState, useEffect } from 'react';
+
 function FoodPage() {
+    const fetchData = async () => {
+        try {
+            const response = await fetch('/api/datatest');
+            const result = await response.json();
+            console.log("result => ",result)
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+      
     return (
         <DefaultLayout
             body={
