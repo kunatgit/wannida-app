@@ -13,7 +13,7 @@ import {
 
 function DefaultLayout({ body }) {
     return (
-        <Box>
+        <Box backgroundColor={'blue.50'}>
             <Container
                 maxW='6xl'
                 centerContent
@@ -21,7 +21,7 @@ function DefaultLayout({ body }) {
                 padding={{ base: '0', sm: '0' ,md: '10'}}
                 justifyContent={'center'}
             >
-                <Box w={{ base: '100%', sm: '100%' ,md: '80%'}}>
+                <Box w={{ base: '100%', sm: '100%' ,md: '80%'}} backgroundColor={'white'}>
                     {body}
                 </Box>
             </Container>

@@ -8,8 +8,8 @@ function ButtonTheme({ text,onClick }) {
     return (
         <Box
             border={'2px solid'}
-            borderColor={Constants.colorTheme}
-            color={Constants.colorTheme}
+            borderColor={Constants.colorTheme400}
+            color={Constants.colorTheme400}
             borderRadius={'50'}
             padding='4'
             bg='white'
