@@ -15,7 +15,7 @@ function DefaultLayout({ body }) {
     return (
         <Box>
             <Container
-                maxW={{ base: '5xl', sm: '5xl' ,md: '3xl'}}
+                maxW='3xl'
                 centerContent
                 height="100vh"
                 padding="10"
