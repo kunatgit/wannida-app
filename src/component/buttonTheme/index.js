@@ -19,14 +19,13 @@ function ButtonTheme({ text,onClick }) {
                 
             }}
             _hover={{
-                bgColor: 'blue.50',
+                bgColor: Constants.colorTheme50,
                 transition: '0.3s ease',
-                // borderRadius:'0',
                 w:'100%',
                 animation: 'mymove 1s infinite linear',
                 '@keyframes mymove': {
                     '50%': {
-                        borderColor: 'var(--chakra-colors-blue-50)',
+                        borderColor: Constants.colorTheme50,
                         w:'95%'
                     },
                 },

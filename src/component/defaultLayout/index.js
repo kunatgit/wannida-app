@@ -13,7 +13,7 @@ import {
 
 function DefaultLayout({ body }) {
     return (
-        <Box backgroundColor={'blue.50'}>
+        <Box backgroundColor={Constants.colorTheme50}>
             <Container
                 maxW='6xl'
                 centerContent
