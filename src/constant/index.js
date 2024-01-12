@@ -7,4 +7,4 @@ export const constantMenu = [
     {text:'รายงาน รายการอาหารประจำเดือน',directPath:''},
 ];
 
-export const titleApp = 'Wannida Application'
+export const appName = 'Wannida Application'

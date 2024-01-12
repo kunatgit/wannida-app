@@ -1,11 +1,11 @@
 import * as React from "react";
 import { Center, ChakraProvider, Spinner } from "@chakra-ui/react";
 import "../styles/global.css";
-import * as Constant from "@/constant";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Head from "next/head";
 import Loading from "@/component/loading"
+import Head from "next/head";
+import * as Constant from "@/constant";
 
 function MyApp({ Component, pageProps }) {
     const LoadingLayout = Loading(Component);
@@ -13,12 +13,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <ChakraProvider>
             <Head>
-                <title>{Constant.titleApp}</title>
-                <link rel="preconnect" href="https://fonts.gstatic.com" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700&display=swap"
-                    rel="stylesheet"
-                />
+                <title>{Constant.appName}</title>
             </Head>
             <LoadingLayout {...pageProps} />
         </ChakraProvider>

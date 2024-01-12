@@ -26,19 +26,19 @@ function MenuPage() {
                     boxShadow={'0px 0px 100px rgb(105 186 231)'}
                     padding={{ base: '5', sm: '5' ,md: '10'}}
                 >
-                    <Box mb={'2'}>
+                    <Box mb={'1'}>
                         <Text
                             textAlign={'center'}
                             color={Constants.colorTheme}
-                            fontSize={'5vh'}
+                            fontSize={{ base: '3vh', sm: '3vh' ,md: '3vh',"xl": '5vh'}}
                         >
                             <TypeAnimation
                                 sequence={[
-                                    Constants.titleApp,
+                                    Constants.appName,
                                     500,
                                     '',
                                     500,
-                                    Constants.titleApp,
+                                    Constants.appName,
                                     500,
                                 ]}
                                 cursor={true}
