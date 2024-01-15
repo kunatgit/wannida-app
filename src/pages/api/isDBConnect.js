@@ -17,13 +17,10 @@ export default async function handler(req, res) {
         try {
             
             await client.connect();
-            const database = client.db(dbName);
-            const collection = database.collection(collectionName);
-            const data = await collection.find({}).toArray();
+            await client.db("admin").command({ ping: 1 });
 
             res.status(200).json({
-                message: "Connected table = " + collectionName,
-                data: data
+                message: "Pinged your deployment. You successfully connected to MongoDB!",
             });
         } catch (e) {
             console.log("Error = ", e);
