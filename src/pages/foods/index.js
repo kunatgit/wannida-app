@@ -10,24 +10,39 @@ import {
     CardHeader,
     HStack,
     Heading,
+    Modal,
+    ModalBody,
+    ModalCloseButton,
+    ModalContent,
+    ModalFooter,
+    ModalHeader,
     SimpleGrid,
     Stack,
     Text,
     Tooltip,
     VStack,
+    useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { SearchIcon } from "@chakra-ui/icons";
+import { AddIcon, SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
 import ButtonMenu from "@/component/buttonMenu";
+import FoodsPopup from "@/component/foodsPopup";
 
 function FoodPage() {
     const [request, setRequest] = useState("");
     const [loading, setLoading] = useState(false);
     const [datas, setDatas] = useState([]);
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const [configPopup, setConfigPopup] = useState({
+        title:"",
+        confirmText:"",
+        data:{}
+    });
 
     const searchFoods = async () => {
         setLoading(true);
+        setDatas([])
         try {
             console.log("searchFoods");
             const response = await fetch("/api/foods/search", {
@@ -35,7 +50,7 @@ function FoodPage() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({name:request}),
+                body: JSON.stringify({ name: request }),
             });
             const res = await response.json();
             console.log("res => ", res);
@@ -84,7 +99,7 @@ function FoodPage() {
                     </Box>
                     <Box>
                         <Stack flexDirection={"row"}>
-                            <Box w={"75%"}>
+                            <Box w={"100%"}>
                                 <InputTheme
                                     placeholder={"ชื่ออาหาร"}
                                     value={request}
@@ -95,13 +110,33 @@ function FoodPage() {
                                     isDisabled={loading}
                                 ></InputTheme>
                             </Box>
-                            <Stack justify={"center"} w={"25%"}>
+                        </Stack>
+                    </Box>
+                    <Box>
+                        <Stack flexDirection={"row"}>
+                            <Stack justify={"center"} w={"50%"}>
                                 <ButtonTheme
                                     leftIcon={<SearchIcon />}
-                                    onClick={searchFoods}
                                     isLoading={loading}
+                                    onClick={searchFoods}
                                 >
                                     ค้นหา
+                                </ButtonTheme>
+                            </Stack>
+                            <Stack justify={"center"} w={"50%"}>
+                                <ButtonTheme
+                                    leftIcon={<SmallAddIcon />}
+                                    isLoading={loading}
+                                    onClick={() => {
+                                        setConfigPopup({
+                                            title:"เพิ่ม เมนูอาหาร",
+                                            confirmText:"เพิ่ม",
+                                            data:{}
+                                        });
+                                        onOpen();
+                                    }}
+                                >
+                                    เพิ่มเมนูอาหาร
                                 </ButtonTheme>
                             </Stack>
                         </Stack>
@@ -131,6 +166,14 @@ function FoodPage() {
                                                 borderColor:
                                                     Constants.colorTheme600,
                                             }}
+                                            onClick={() => {
+                                                setConfigPopup({
+                                                    title:"แก้ไข เมนูอาหาร",
+                                                    confirmText:"แก้ไข",
+                                                    data:item
+                                                });
+                                                onOpen();
+                                            }}
                                         >
                                             <Text
                                                 color={Constants.colorTheme600}
@@ -143,9 +186,15 @@ function FoodPage() {
                             })}
                         </SimpleGrid>
                     </Box>
+                    <FoodsPopup
+                        isOpen={isOpen}
+                        onOpen={onOpen}
+                        onClose={onClose}
+                        config={configPopup}
+                    ></FoodsPopup>
                 </VStack>
             }
-        />
+        ></DefaultLayout>
     );
 }
 
