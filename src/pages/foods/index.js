@@ -10,6 +10,7 @@ import {
     CardHeader,
     HStack,
     Heading,
+    IconButton,
     Modal,
     ModalBody,
     ModalCloseButton,
@@ -25,7 +26,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { AddIcon, SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon, SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
 import ButtonMenu from "@/component/buttonMenu";
 import FoodsPopup from "@/component/foodsPopup";
 
@@ -65,8 +66,8 @@ function FoodPage() {
     };
 
     useEffect(() => {
-        console.log("Frist Time");
-    }, []);
+        console.log("isOpen = " ,isOpen);
+    }, [isOpen]);
 
     return (
         <DefaultLayout
@@ -191,6 +192,7 @@ function FoodPage() {
                         onOpen={onOpen}
                         onClose={onClose}
                         config={configPopup}
+                        fetchFunction={searchFoods}
                     ></FoodsPopup>
                 </VStack>
             }

@@ -26,9 +26,9 @@ import * as Constants from "@/constant";
 import ButtonTheme from "@/component/butonTheme";
 import InputTheme from "@/component/inputTheme";
 import InputNumberTheme from "@/component/inputNumberTheme";
-import { AddIcon, CloseIcon } from "@chakra-ui/icons";
+import { AddIcon, CloseIcon, DeleteIcon } from "@chakra-ui/icons";
 
-function FoodsPopup({ isOpen, onOpen, onClose, config }) {
+function FoodsPopup({ isOpen, onOpen, onClose, config, fetchFunction }) {
     const requestDefualt = {
         _id: "",
         name: "",
@@ -88,6 +88,30 @@ function FoodsPopup({ isOpen, onOpen, onClose, config }) {
           ...request,
           ingredients: [...request.ingredients, newIngredient],
         });
+    };
+
+    const callDB = (mode) => async (event) => {
+        var path = "/api/foods/manage";
+        if(mode == "delete"){
+            path = "/api/foods/remove"
+        }
+        try {
+            console.log("callDB mode = ",mode);
+            const response = await fetch(path, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(request),
+            });
+            const res = await response.json();
+            console.log("res => ", res);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            onClose();
+            fetchFunction();
+        }
     };
       
     
@@ -165,12 +189,23 @@ function FoodsPopup({ isOpen, onOpen, onClose, config }) {
                     <ModalFooter>
                         <HStack>
                             <ButtonTheme
-                                onClick={onClose}
+                                onClick={callDB(config.confirmText)}
                                 customColor={"green"}
                             >
                                 {config.confirmText}
                             </ButtonTheme>
-                            <ButtonTheme onClick={onClose} customColor={"red"}>
+                            {
+                                config.confirmText != "เพิ่ม" && (
+                                    <ButtonTheme
+                                        onClick={callDB("delete")}
+                                        customColor={"red"}
+                                    >
+                                        ลบ
+                                    </ButtonTheme>
+                                )
+                                
+                            }
+                            <ButtonTheme onClick={onClose}>
                                 ปิด
                             </ButtonTheme>
                         </HStack>
