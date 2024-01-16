@@ -22,7 +22,6 @@ import ButtonTheme from "@/component/butonTheme";
 import InputTheme from "@/component/inputTheme";
 import InputNumberTheme from "@/component/inputNumberTheme";
 import { AddIcon, CloseIcon, DeleteIcon } from "@chakra-ui/icons";
-import { TypeAnimation } from "react-type-animation";
 
 function FoodsPopup({ isOpen, onOpen, onClose, config, fetchFunction, setLoading }) {
     const requestDefualt = {
@@ -32,7 +31,6 @@ function FoodsPopup({ isOpen, onOpen, onClose, config, fetchFunction, setLoading
         ingredients: [],
     };
     const [request, setRequest] = useState(requestDefualt);
-    const [errorStatus, setErrorStatus] = useState({});
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {

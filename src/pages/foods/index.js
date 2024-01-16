@@ -4,19 +4,8 @@ import InputTheme from "@/component/inputTheme";
 import * as Constants from "@/constant";
 import {
     Box,
-    Button,
-    Card,
-    CardBody,
-    CardHeader,
-    HStack,
     Heading,
     IconButton,
-    Modal,
-    ModalBody,
-    ModalCloseButton,
-    ModalContent,
-    ModalFooter,
-    ModalHeader,
     SimpleGrid,
     Stack,
     Text,
@@ -66,10 +55,6 @@ function FoodPage() {
             setLoading(false);
         }
     };
-
-    useEffect(() => {
-        console.log("isOpen = ", isOpen);
-    }, [isOpen]);
 
     return (
         <DefaultLayout
