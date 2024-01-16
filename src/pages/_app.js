@@ -3,7 +3,7 @@ import { Center, ChakraProvider, Spinner } from "@chakra-ui/react";
 import "../styles/global.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Loading from "@/component/loading"
+import Loading from "@/component/loading";
 import Head from "next/head";
 import * as Constant from "@/constant";
 
@@ -21,7 +21,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-
-
-
-

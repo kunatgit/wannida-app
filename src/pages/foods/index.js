@@ -26,12 +26,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
-import {
-    AddIcon,
-    DeleteIcon,
-    SearchIcon,
-    SmallAddIcon,
-} from "@chakra-ui/icons";
+import { AddIcon, DeleteIcon, SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
 import ButtonMenu from "@/component/buttonMenu";
 import FoodsPopup from "@/component/foodsPopup";
 
@@ -77,27 +72,11 @@ function FoodPage() {
     return (
         <DefaultLayout
             body={
-                <VStack
-                    spacing={2}
-                    align="stretch"
-                    h={"100vh"}
-                    padding={{ base: "5", sm: "5", md: "10" }}
-                >
+                <VStack spacing={2} align="stretch" h={"100vh"} padding={{ base: "5", sm: "5", md: "10" }}>
                     <Box mb={"2"}>
-                        <Heading
-                            size={"md"}
-                            textAlign={"center"}
-                            color={Constants.colorTheme600}
-                        >
+                        <Heading size={"md"} textAlign={"center"} color={Constants.colorTheme600}>
                             <TypeAnimation
-                                sequence={[
-                                    Constants.foodsPageName,
-                                    500,
-                                    "",
-                                    500,
-                                    Constants.foodsPageName,
-                                    500,
-                                ]}
+                                sequence={[Constants.foodsPageName, 500, "", 500, Constants.foodsPageName, 500]}
                                 cursor={true}
                                 repeat={Infinity}
                             />
@@ -121,11 +100,7 @@ function FoodPage() {
                     <Box>
                         <Stack flexDirection={"row"}>
                             <Stack justify={"center"} w={"50%"}>
-                                <ButtonTheme
-                                    leftIcon={<SearchIcon />}
-                                    isLoading={loading}
-                                    onClick={searchFoods}
-                                >
+                                <ButtonTheme leftIcon={<SearchIcon />} isLoading={loading} onClick={searchFoods}>
                                     ค้นหา
                                 </ButtonTheme>
                             </Stack>
@@ -147,25 +122,19 @@ function FoodPage() {
                             </Stack>
                         </Stack>
                     </Box>
-                    {!loading & datas.length >= 0 && (
+                    {!loading & (datas.length >= 0) && (
                         <Box mb={"3"} pl={"3"} pr={"3"}>
-                            <Text
-                                color={Constants.colorTheme600}
-                                fontSize={"12"}
-                            >
+                            <Text color={Constants.colorTheme600} fontSize={"12"}>
                                 ผลการค้นหาจำนวน {datas.length} รายการ
                             </Text>
                         </Box>
                     )}
-                    {!loading & datas.length >= 0  && (
+                    {!loading & (datas.length >= 0) && (
                         <Box>
                             <SimpleGrid columns={2} spacing="4" mb={"1"}>
                                 {datas.map((item, index) => {
                                     return (
-                                        <Tooltip
-                                            key={"data_" + index}
-                                            label="คลิกเพื่อแก้ไข"
-                                        >
+                                        <Tooltip key={"data_" + index} label="คลิกเพื่อแก้ไข">
                                             <Box
                                                 padding={"5"}
                                                 border={"1px solid"}
@@ -174,10 +143,8 @@ function FoodPage() {
                                                 cursor="pointer"
                                                 textAlign={"center"}
                                                 _hover={{
-                                                    bgColor:
-                                                        Constants.colorTheme50,
-                                                    borderColor:
-                                                        Constants.colorTheme600,
+                                                    bgColor: Constants.colorTheme50,
+                                                    borderColor: Constants.colorTheme600,
                                                 }}
                                                 onClick={() => {
                                                     setConfigPopup({
@@ -188,13 +155,7 @@ function FoodPage() {
                                                     onOpen();
                                                 }}
                                             >
-                                                <Text
-                                                    color={
-                                                        Constants.colorTheme600
-                                                    }
-                                                >
-                                                    {item.name}
-                                                </Text>
+                                                <Text color={Constants.colorTheme600}>{item.name}</Text>
                                             </Box>
                                         </Tooltip>
                                     );

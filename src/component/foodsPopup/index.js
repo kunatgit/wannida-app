@@ -24,14 +24,7 @@ import InputNumberTheme from "@/component/inputNumberTheme";
 import { AddIcon, CloseIcon, DeleteIcon } from "@chakra-ui/icons";
 import { TypeAnimation } from "react-type-animation";
 
-function FoodsPopup({
-    isOpen,
-    onOpen,
-    onClose,
-    config,
-    fetchFunction,
-    setLoading,
-}) {
+function FoodsPopup({ isOpen, onOpen, onClose, config, fetchFunction, setLoading }) {
     const requestDefualt = {
         _id: "",
         name: "",
@@ -141,9 +134,7 @@ function FoodsPopup({
             <Modal isCentered isOpen={isOpen} onClose={onClose} size={"3xl"}>
                 <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(2px)" />
                 <ModalContent>
-                    <ModalHeader color={Constants.colorTheme600}>
-                        {config.title}
-                    </ModalHeader>
+                    <ModalHeader color={Constants.colorTheme600}>{config.title}</ModalHeader>
                     <ModalBody>
                         <VStack spacing={2} align="stretch" mb={5}>
                             {/* <Text>{JSON.stringify(config.data)}</Text>
@@ -153,36 +144,26 @@ function FoodsPopup({
                                     {JSON.stringify(config.data) === JSON.stringify(request) ? "true" : "false"}
                                 </Text> */}
                             <FormControl isRequired>
-                                <FormLabel color={Constants.colorTheme600}>
-                                    ชื่ออาหาร
-                                </FormLabel>
+                                <FormLabel color={Constants.colorTheme600}>ชื่ออาหาร</FormLabel>
                                 <InputTheme
                                     value={request.name}
                                     isInvalid={isError && !request.name}
-                                    onChange={(e) =>
-                                        handleChange("name", e.target.value)
-                                    }
+                                    onChange={(e) => handleChange("name", e.target.value)}
                                 />
                             </FormControl>
                             <FormControl isRequired>
-                                <FormLabel color={Constants.colorTheme600}>
-                                    พลังงานทั้งหมด (kcal)
-                                </FormLabel>
+                                <FormLabel color={Constants.colorTheme600}>พลังงานทั้งหมด (kcal)</FormLabel>
                                 <InputNumberTheme
                                     min={0}
                                     value={request.calorie}
                                     isInvalid={isError && !request.calorie}
-                                    onChange={(value) =>
-                                        handleChange("calorie", value)
-                                    }
+                                    onChange={(value) => handleChange("calorie", value)}
                                 >
                                     <NumberInputField />
                                 </InputNumberTheme>
                             </FormControl>
                             <Stack flexDirection={"row"} alignItems={"center"}>
-                                <Text color={Constants.colorTheme600}>
-                                    วัตถุดิบ
-                                </Text>
+                                <Text color={Constants.colorTheme600}>วัตถุดิบ</Text>
                                 <IconButton
                                     size="xs"
                                     colorScheme="green"
@@ -193,75 +174,30 @@ function FoodsPopup({
                             </Stack>
                             {request.ingredients.map((item, index) => {
                                 return (
-                                    <Stack
-                                        key={"ingredients_" + index}
-                                        flexDirection={"row"}
-                                        alignItems={"center"}
-                                    >
+                                    <Stack key={"ingredients_" + index} flexDirection={"row"} alignItems={"center"}>
                                         <Box>
                                             <InputTheme
                                                 placeholder={"ชื่อวัตถุดิบ"}
-                                                value={
-                                                    request.ingredients[index]
-                                                        .name
-                                                }
-                                                isInvalid={
-                                                    isError &&
-                                                    !request.ingredients[index]
-                                                        .name
-                                                }
-                                                onChange={(e) =>
-                                                    handleChangeIngredients(
-                                                        "name",
-                                                        index,
-                                                        e.target.value
-                                                    )
-                                                }
+                                                value={request.ingredients[index].name}
+                                                isInvalid={isError && !request.ingredients[index].name}
+                                                onChange={(e) => handleChangeIngredients("name", index, e.target.value)}
                                             />
                                         </Box>
                                         <Box>
                                             <InputNumberTheme
-                                                value={
-                                                    request.ingredients[index]
-                                                        .amount
-                                                }
-                                                isInvalid={
-                                                    isError &&
-                                                    !request.ingredients[index]
-                                                        .amount
-                                                }
-                                                onChange={(value) =>
-                                                    handleChangeIngredients(
-                                                        "amount",
-                                                        index,
-                                                        value
-                                                    )
-                                                }
+                                                value={request.ingredients[index].amount}
+                                                isInvalid={isError && !request.ingredients[index].amount}
+                                                onChange={(value) => handleChangeIngredients("amount", index, value)}
                                             >
-                                                <NumberInputField
-                                                    placeholder={"จำนวน"}
-                                                />
+                                                <NumberInputField placeholder={"จำนวน"} />
                                             </InputNumberTheme>
                                         </Box>
                                         <Box>
                                             <InputTheme
                                                 placeholder={"หน่วย"}
-                                                value={
-                                                    request.ingredients[index]
-                                                        .unit
-                                                }
-                                                isInvalid={
-                                                    isError &&
-                                                    !request.ingredients[index]
-                                                        .unit
-                                                }
-                                                onChange={(e) =>
-                                                    handleChangeIngredients(
-                                                        "unit",
-                                                        index,
-                                                        e.target.value
-                                                    )
-                                                }
+                                                value={request.ingredients[index].unit}
+                                                isInvalid={isError && !request.ingredients[index].unit}
+                                                onChange={(e) => handleChangeIngredients("unit", index, e.target.value)}
                                             />
                                         </Box>
                                         <IconButton
@@ -269,9 +205,7 @@ function FoodsPopup({
                                             colorScheme="red"
                                             icon={<CloseIcon></CloseIcon>}
                                             variant="outline"
-                                            onClick={() =>
-                                                handleDeleteIngredient(index)
-                                            }
+                                            onClick={() => handleDeleteIngredient(index)}
                                         ></IconButton>
                                     </Stack>
                                 );
@@ -280,17 +214,11 @@ function FoodsPopup({
                     </ModalBody>
                     <ModalFooter>
                         <HStack>
-                            <ButtonTheme
-                                onClick={callDB(config.confirmText)}
-                                customColor={"green"}
-                            >
+                            <ButtonTheme onClick={callDB(config.confirmText)} customColor={"green"}>
                                 {config.confirmText}
                             </ButtonTheme>
                             {config.confirmText != "เพิ่ม" && (
-                                <ButtonTheme
-                                    onClick={callDB("delete")}
-                                    customColor={"red"}
-                                >
+                                <ButtonTheme onClick={callDB("delete")} customColor={"red"}>
                                     ลบ
                                 </ButtonTheme>
                             )}
