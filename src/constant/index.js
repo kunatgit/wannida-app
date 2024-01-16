@@ -14,9 +14,10 @@ export const colorTheme900 = colorTheme+".900";
 
 export const constantMenu = [
     {text:'จัดการ เมนูอาหาร',directPath:'foods'},
-    {text:'จัดการ รายการอาหารประจำเดือน',directPath:''},
+    {text:'จัดการ รายการอาหารประจำเดือน',directPath:'monthlyFoods'},
     {text:'รายงาน รายการอาหารประจำเดือน',directPath:''},
 ];
 
 export const appName = 'Wannida Application'
 export const foodsPageName = constantMenu.find(menu => menu.directPath === 'foods').text;
+export const monthlyFoodsPageName = constantMenu.find(menu => menu.directPath === 'monthlyFoods').text;
