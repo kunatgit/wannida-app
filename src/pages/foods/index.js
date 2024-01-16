@@ -26,7 +26,12 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { AddIcon, DeleteIcon, SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
+import {
+    AddIcon,
+    DeleteIcon,
+    SearchIcon,
+    SmallAddIcon,
+} from "@chakra-ui/icons";
 import ButtonMenu from "@/component/buttonMenu";
 import FoodsPopup from "@/component/foodsPopup";
 
@@ -36,14 +41,14 @@ function FoodPage() {
     const [datas, setDatas] = useState([]);
     const { isOpen, onOpen, onClose } = useDisclosure();
     const [configPopup, setConfigPopup] = useState({
-        title:"",
-        confirmText:"",
-        data:{}
+        title: "",
+        confirmText: "",
+        data: {},
     });
 
     const searchFoods = async () => {
         setLoading(true);
-        setDatas([])
+        setDatas([]);
         try {
             console.log("searchFoods");
             const response = await fetch("/api/foods/search", {
@@ -66,7 +71,7 @@ function FoodPage() {
     };
 
     useEffect(() => {
-        console.log("isOpen = " ,isOpen);
+        console.log("isOpen = ", isOpen);
     }, [isOpen]);
 
     return (
@@ -130,9 +135,9 @@ function FoodPage() {
                                     isLoading={loading}
                                     onClick={() => {
                                         setConfigPopup({
-                                            title:"เพิ่ม เมนูอาหาร",
-                                            confirmText:"เพิ่ม",
-                                            data:{}
+                                            title: "เพิ่ม เมนูอาหาร",
+                                            confirmText: "เพิ่ม",
+                                            data: {},
                                         });
                                         onOpen();
                                     }}
@@ -142,57 +147,68 @@ function FoodPage() {
                             </Stack>
                         </Stack>
                     </Box>
-                    <Box mb={"3"} pl={"3"} pr={"3"}>
-                        <Text color={Constants.colorTheme600} fontSize={"12"}>
-                            ผลการค้นหาจำนวน {datas.length} รายการ
-                        </Text>
-                    </Box>
-                    <Box>
-                        <SimpleGrid columns={2} spacing="4" mb={"1"}>
-                            {datas.map((item, index) => {
-                                return (
-                                    <Tooltip
-                                        key={"data_" + index}
-                                        label="คลิกเพื่อแก้ไข"
-                                    >
-                                        <Box
-                                            padding={"5"}
-                                            border={"1px solid"}
-                                            borderRadius={"10"}
-                                            borderColor={"gray.200"}
-                                            cursor="pointer"
-                                            textAlign={"center"}
-                                            _hover={{
-                                                bgColor: Constants.colorTheme50,
-                                                borderColor:
-                                                    Constants.colorTheme600,
-                                            }}
-                                            onClick={() => {
-                                                setConfigPopup({
-                                                    title:"แก้ไข เมนูอาหาร",
-                                                    confirmText:"แก้ไข",
-                                                    data:item
-                                                });
-                                                onOpen();
-                                            }}
+                    {!loading & datas.length >= 0 && (
+                        <Box mb={"3"} pl={"3"} pr={"3"}>
+                            <Text
+                                color={Constants.colorTheme600}
+                                fontSize={"12"}
+                            >
+                                ผลการค้นหาจำนวน {datas.length} รายการ
+                            </Text>
+                        </Box>
+                    )}
+                    {!loading & datas.length >= 0  && (
+                        <Box>
+                            <SimpleGrid columns={2} spacing="4" mb={"1"}>
+                                {datas.map((item, index) => {
+                                    return (
+                                        <Tooltip
+                                            key={"data_" + index}
+                                            label="คลิกเพื่อแก้ไข"
                                         >
-                                            <Text
-                                                color={Constants.colorTheme600}
+                                            <Box
+                                                padding={"5"}
+                                                border={"1px solid"}
+                                                borderRadius={"10"}
+                                                borderColor={"gray.200"}
+                                                cursor="pointer"
+                                                textAlign={"center"}
+                                                _hover={{
+                                                    bgColor:
+                                                        Constants.colorTheme50,
+                                                    borderColor:
+                                                        Constants.colorTheme600,
+                                                }}
+                                                onClick={() => {
+                                                    setConfigPopup({
+                                                        title: "แก้ไข เมนูอาหาร",
+                                                        confirmText: "แก้ไข",
+                                                        data: item,
+                                                    });
+                                                    onOpen();
+                                                }}
                                             >
-                                                {item.name}
-                                            </Text>
-                                        </Box>
-                                    </Tooltip>
-                                );
-                            })}
-                        </SimpleGrid>
-                    </Box>
+                                                <Text
+                                                    color={
+                                                        Constants.colorTheme600
+                                                    }
+                                                >
+                                                    {item.name}
+                                                </Text>
+                                            </Box>
+                                        </Tooltip>
+                                    );
+                                })}
+                            </SimpleGrid>
+                        </Box>
+                    )}
                     <FoodsPopup
                         isOpen={isOpen}
                         onOpen={onOpen}
                         onClose={onClose}
                         config={configPopup}
                         fetchFunction={searchFoods}
+                        setLoading={setLoading}
                     ></FoodsPopup>
                 </VStack>
             }
