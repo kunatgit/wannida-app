@@ -26,11 +26,13 @@ import {
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
-import { AddIcon, DeleteIcon, SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
+import { AddIcon, ArrowBackIcon, DeleteIcon, SearchIcon, SmallAddIcon } from "@chakra-ui/icons";
 import ButtonMenu from "@/component/buttonMenu";
 import FoodsPopup from "@/component/foodsPopup";
+import { useRouter } from "next/router";
 
 function FoodPage() {
+    const router = useRouter();
     const [request, setRequest] = useState("");
     const [loading, setLoading] = useState(false);
     const [datas, setDatas] = useState([]);
@@ -73,6 +75,16 @@ function FoodPage() {
         <DefaultLayout
             body={
                 <VStack spacing={2} align="stretch" h={"100vh"} padding={{ base: "5", sm: "5", md: "10" }}>
+                    <Box>
+                        <IconButton
+                            colorScheme={Constants.colorTheme}
+                            variant="outline"
+                            onClick={() => {
+                                router.replace('/menu')
+                            }}
+                            icon={<ArrowBackIcon></ArrowBackIcon>}
+                        ></IconButton>
+                    </Box>
                     <Box mb={"2"}>
                         <Heading size={"md"} textAlign={"center"} color={Constants.colorTheme600}>
                             <TypeAnimation
