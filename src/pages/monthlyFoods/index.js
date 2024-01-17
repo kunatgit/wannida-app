@@ -16,6 +16,7 @@ import {
     Text,
     Tooltip,
     VStack,
+    background,
     useDisclosure,
 } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
@@ -27,8 +28,22 @@ import { useRouter } from "next/router";
 
 function MonthlyFoods() {
     const router = useRouter();
-    const [request, setRequest] = useState("");
     const [loading, setLoading] = useState(false);
+    const [request, setRequest] = useState({
+        month: "01",
+        year: Constants.thisYear.toString(),
+    });
+
+    const handleChange = (property, value) => {
+        setRequest((prevRequest) => ({
+            ...prevRequest,
+            [property]: value,
+        }));
+    };
+
+    useEffect(() => {
+        console.log("request => ",request)
+    }, [request]);
 
     return (
         <DefaultLayout
@@ -56,24 +71,42 @@ function MonthlyFoods() {
                     <Box>
                         <Stack flexDirection={"row"}>
                             <Box w={"50%"}>
-                                <Select placeholder={"เดือน"} focusBorderColor={Constants.colorTheme600} cursor={'pointer'}></Select>
+                                <Select
+                                    focusBorderColor={Constants.colorTheme600}
+                                    cursor={"pointer"}
+                                    value={request.month}
+                                    onChange={(e) => handleChange("month", e.target.value)}
+                                >
+                                    {Constants.monthsInThai.map((item, index) => (
+                                        <option key={item.label + "_" + index} value={item.value}>
+                                            {item.label}
+                                        </option>
+                                    ))}
+                                </Select>
                             </Box>
                             <Box w={"50%"}>
-                                <Select placeholder={"ปี"} focusBorderColor={Constants.colorTheme600} cursor={'pointer'}></Select>
+                                <Select
+                                    focusBorderColor={Constants.colorTheme600}
+                                    cursor={"pointer"}
+                                    value={request.year}
+                                    onChange={(e) => handleChange("year", e.target.value)}
+                                >
+                                    {Constants.yearsArr.map((item, index) => (
+                                        <option key={item + "_" + index} value={item}>
+                                            {item}
+                                        </option>
+                                    ))}
+                                </Select>
                             </Box>
                         </Stack>
                     </Box>
                     <Box>
                         <Stack flexDirection={"row"}>
                             <Stack justify={"center"} w={"50%"}>
-                                <ButtonTheme leftIcon={<SearchIcon />}>
-                                    ค้นหา
-                                </ButtonTheme>
+                                <ButtonTheme leftIcon={<SearchIcon />}>ค้นหา</ButtonTheme>
                             </Stack>
                             <Stack justify={"center"} w={"50%"}>
-                                <ButtonTheme leftIcon={<SmallAddIcon />}>
-                                    เพิ่มรายการประจำวัน
-                                </ButtonTheme>
+                                <ButtonTheme leftIcon={<SmallAddIcon />}>เพิ่มรายการประจำวัน</ButtonTheme>
                             </Stack>
                         </Stack>
                     </Box>
